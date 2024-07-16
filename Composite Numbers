@@ -1,0 +1,95 @@
+Composite Numbers
+You are given an array A consisting of N integers. You have to remove all the composite numbers from the array.
+
+Note Complete the given function and print the updated array. The input and output would be handled by the driver code. You have to return the final arraylist.
+
+1 is neither prime nor composite.
+
+Input Format
+The first line an integer N.
+
+The next line contains N integers.
+
+Output Format
+Return the updated arraylist.
+
+Example 1
+Input
+
+4
+3 12 13 15
+Output
+
+3 13
+Explanation
+
+12 and 15 are composite, thus, they are removed.
+
+Example 2
+Input
+
+2
+4 2
+Output
+
+2
+Explanation
+
+4 is the only composite number. It is removed.
+
+Constraints
+1 <= N <= 10000
+
+1 <= A[i] <= 10000
+
+Topics
+Arrays
+
+import java.util.*;
+
+class Main
+{
+    static boolean isPrime(int n)
+    {
+        int count = 0;
+        
+        for(int i=1; i<=n; i=i+1)
+        {
+            if(n%i == 0)
+            {
+                count++;
+            }
+        }
+        
+        if(count == 2) // prime number -- 2 divisors 
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+    }
+    
+    static void removeComposite(int arr[], int len)
+    {
+    	for(int i=0; i<len; i=i+1)
+    	{
+    	    if(isPrime(arr[i]) == true)
+    	    {
+    	        System.out.print(arr[i] + " ");
+    	    }
+    	}
+    }
+    
+    public static void main(String[] args)
+    {
+    	Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+    	removeComposite(arr, n);
+    }
+}
